@@ -1,4 +1,4 @@
-package org.springframework.wasm;
+package com.example.demo;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -16,19 +16,6 @@ public class ProtobufTests {
 		GenericMessage msg = GenericMessage.newBuilder()
 				.addRepeatedField(GenericMessage.getDescriptor().findFieldByName("fields"), entry.toBuilder()
 						.setKey("str").setValue(GenericValue.newBuilder().setStringVal("Hello World").build()).build())
-				.addRepeatedField(GenericMessage.getDescriptor().findFieldByName("fields"), entry.toBuilder()
-						.setKey("obj")
-						.setValue(
-								GenericValue.newBuilder()
-										.setMessageVal(GenericMessage.newBuilder().addRepeatedField(
-												GenericMessage.getDescriptor().findFieldByName("fields"),
-												entry.toBuilder()
-														.setKey("str")
-														.setValue(GenericValue.newBuilder().setStringVal("Bye Bye")
-																.build())
-														.build()))
-										.build())
-						.build())
 				.build();
 		System.err.println(msg);
 		assertThat(msg.getFieldsMap().get("str").getStringVal()).isEqualTo("Hello World");
@@ -36,6 +23,17 @@ public class ProtobufTests {
 			System.err.println(b);
 		}
 		System.err.println(GenericMessage.getDescriptor().toProto());
+	}
+
+	@Test
+	void testGenericValue() throws Exception {
+		GenericValue msg = GenericValue.newBuilder().setStringVal("Hello World").build();
+		System.err.println(msg);
+		assertThat(msg.getStringVal()).isEqualTo("Hello World");
+		for (byte b : msg.toByteArray()) {
+			System.err.println(b);
+		}
+		System.err.println(GenericValue.getDescriptor().toProto());
 	}
 
 }
