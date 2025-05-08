@@ -12,7 +12,7 @@ public class ProtobufTests {
 	@Test
 	void testGenericMessage() throws Exception {
 		MapEntry<String, GenericValue> entry = MapEntry.newDefaultInstance(GenericValue.getDescriptor(),
-				FieldType.STRING, "", FieldType.MESSAGE, null);
+				FieldType.STRING, "", FieldType.MESSAGE, GenericValue.getDefaultInstance());
 		GenericMessage msg = GenericMessage.newBuilder()
 				.addRepeatedField(GenericMessage.getDescriptor().findFieldByName("fields"), entry.toBuilder()
 						.setKey("str").setValue(GenericValue.newBuilder().setStringVal("Hello World").build()).build())
