@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.6.3</version>
+		<version>3.5.0</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.springframework.experimental</groupId>
@@ -13,8 +13,8 @@
 	<name>demo</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>11</java.version>
-		<protobuf-java.version>4.30.2</protobuf-java.version>
+		<java.version>17</java.version>
+		<protobuf-java.version>4.31.0</protobuf-java.version>
 		<grpc.version>1.72.0</grpc.version>
 	</properties>
 	<dependencies>
